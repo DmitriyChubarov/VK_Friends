@@ -1,9 +1,7 @@
 {% extends 'main/main.html' %}
-
-{% block title %}Главная страница{% endblock %}
  
 {% block body %}
-<h2>Sign up</h2>
+<h2>Создать аккаунт</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}

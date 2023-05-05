@@ -5,7 +5,12 @@
 
 {% block body %}
     <div>
-        <h1>Главная страница</h1>
-        <p>Тут должно что-то располагаться</p>
+        {% if user.is_authenticated %}
+            <h3>Добро пожаловать, {{ user.username }}!</h3>
+            <h3><a href="{% url 'logout' %}">Выйти</a></h3>
+        {% else %}
+            <h3>Вы не вошли в аккаунт</h3>
+            <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
     </div>
 {% endblock %}

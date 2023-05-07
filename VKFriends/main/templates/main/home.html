@@ -4,14 +4,27 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block body %}
+
     <div>
         {% if user.is_authenticated %}
             <h3>Добро пожаловать, {{ user.username }}!</h3>
             <h3><a href="{% url 'logout' %}">Выйти</a></h3>
+
+            {% if users %}
+                <h3>Возможные друзья:</h3>
+                {% for user in users %}
+                    <div>
+                        <p>{{ user.username }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
         {% else %}
+
             <h3>Вы не вошли в аккаунт</h3>
             <h3><a href="{% url 'login' %}">Войти</a></h3>
             <h3><a href="{% url 'signup' %}">Зарегистрироваться</a></h3>
+
         {% endif %}
     </div>
 {% endblock %}
